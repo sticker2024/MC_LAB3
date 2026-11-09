@@ -1,0 +1,12 @@
+from,to,trigger
+IDLE,RACH_PREAMBLE,Data to send / re-establishment; strongest cell >= -105 dBm (after 5-sample wait following RLF)
+RACH_PREAMBLE,RACH_RAR,Preamble detected (cell RSRP >= -110 dBm)
+RACH_PREAMBLE,IDLE,4 attempts without detection
+RACH_RAR,RACH_CONNREQ,RAR with timing advance received
+RACH_CONNREQ,RACH_CONTENTION,Msg3 (RRC connection request) sent
+RACH_CONTENTION,CONNECTED,Contention resolved (Msg4)
+RACH_CONTENTION,RACH_PREAMBLE,Contention lost -> back off and retry
+CONNECTED,HANDOVER,"Policy fires (naive, or hysteresis margin held for TTT samples)"
+HANDOVER,CONNECTED,Execution done (3 samples) and target RSRP >= -110 dBm
+CONNECTED,IDLE,RLF: serving RSRP < -110 dBm for 3 consecutive samples
+HANDOVER,IDLE,"RLF on source during execution, or target too weak"

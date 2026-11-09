@@ -1,0 +1,4 @@
+configuration,margin_dB,TTT_samples,handovers,min_serving_RSRP_dBm,samples_below_-100dBm,handover_samples
+"Naive (margin 0 dB, no TTT)",0.0,1,11,-102.7,4,105 107 109 110 126 129 130 137 138 143 145
+"Hysteresis only (3 dB, no TTT)",3.0,1,5,-103.4,5,105 107 109 110 126
+Hysteresis 3 dB + TTT 5 samples,3.0,5,1,-105.9,25,154

@@ -1,0 +1,25 @@
+Policy: hysteresis 8 dB + TTT 60 samples
+   t time(s)   x(m)  from            -> to               cell trigger
+   0     0.0     50  IDLE            -> RACH_PREAMBLE    A    cell selection: A at -67.6 dBm; data to send -> send preamble (Msg1)
+   1     0.2     54  RACH_PREAMBLE   -> RACH_RAR         A    preamble detected -> Random Access Response (Msg2)
+   2     0.4     58  RACH_RAR        -> RACH_CONNREQ     A    RAR received, timing advance = 1 steps -> RRC connection request (Msg3)
+   3     0.6     62  RACH_CONNREQ    -> RACH_CONTENTION  A    Msg3 sent -> awaiting contention resolution (Msg4)
+   4     0.8     66  RACH_CONTENTION -> RACH_PREAMBLE    A    contention lost (identity mismatch) -> back off, new preamble
+   5     1.0     70  RACH_PREAMBLE   -> RACH_RAR         A    preamble detected -> Random Access Response (Msg2)
+   6     1.2     74  RACH_RAR        -> RACH_CONNREQ     A    RAR received, timing advance = 1 steps -> RRC connection request (Msg3)
+   7     1.4     78  RACH_CONNREQ    -> RACH_CONTENTION  A    Msg3 sent -> awaiting contention resolution (Msg4)
+   8     1.6     82  RACH_CONTENTION -> CONNECTED        A    contention resolved (Msg4) -> RRC connected
+ 191    38.2    814  CONNECTED       -> IDLE             -    RADIO LINK FAILURE: A -111.9 dBm < -110 dBm for 3 samples (too-late handover)
+ 196    39.2    834  IDLE            -> RACH_PREAMBLE    B    cell selection: B at -87.7 dBm; data to send -> send preamble (Msg1)
+ 197    39.4    838  RACH_PREAMBLE   -> RACH_RAR         B    preamble detected -> Random Access Response (Msg2)
+ 198    39.6    842  RACH_RAR        -> RACH_CONNREQ     B    RAR received, timing advance = 2 steps -> RRC connection request (Msg3)
+ 199    39.8    846  RACH_CONNREQ    -> RACH_CONTENTION  B    Msg3 sent -> awaiting contention resolution (Msg4)
+ 200    40.0    850  RACH_CONTENTION -> CONNECTED        B    contention resolved (Msg4) -> RRC connected
+ 446    89.2   1834  CONNECTED       -> IDLE             -    RADIO LINK FAILURE: B -114.4 dBm < -110 dBm for 3 samples (too-late handover)
+ 451    90.2   1854  IDLE            -> RACH_PREAMBLE    C    cell selection: C at -81.2 dBm; data to send -> send preamble (Msg1)
+ 452    90.4   1858  RACH_PREAMBLE   -> RACH_RAR         C    preamble detected -> Random Access Response (Msg2)
+ 453    90.6   1862  RACH_RAR        -> RACH_CONNREQ     C    RAR received, timing advance = 2 steps -> RRC connection request (Msg3)
+ 454    90.8   1866  RACH_CONNREQ    -> RACH_CONTENTION  C    Msg3 sent -> awaiting contention resolution (Msg4)
+ 455    91.0   1870  RACH_CONTENTION -> CONNECTED        C    contention resolved (Msg4) -> RRC connected
+
+Handovers completed: 0   RLF: 2   Ping-pongs: 0

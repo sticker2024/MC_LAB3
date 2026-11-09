@@ -1,0 +1,4 @@
+policy,completed_handovers,RLF,ping_pong,RACH_attaches
+"naive (no margin, no TTT)",16,0,13,1
+hysteresis 3 dB + TTT 5 samples,2,0,0,1
+hysteresis 8 dB + TTT 60 samples,0,2,0,3

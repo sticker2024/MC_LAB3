@@ -1,0 +1,46 @@
+Policy: naive (no margin, no TTT)
+   t time(s)   x(m)  from            -> to               cell trigger
+   0     0.0     50  IDLE            -> RACH_PREAMBLE    A    cell selection: A at -67.6 dBm; data to send -> send preamble (Msg1)
+   1     0.2     54  RACH_PREAMBLE   -> RACH_RAR         A    preamble detected -> Random Access Response (Msg2)
+   2     0.4     58  RACH_RAR        -> RACH_CONNREQ     A    RAR received, timing advance = 1 steps -> RRC connection request (Msg3)
+   3     0.6     62  RACH_CONNREQ    -> RACH_CONTENTION  A    Msg3 sent -> awaiting contention resolution (Msg4)
+   4     0.8     66  RACH_CONTENTION -> RACH_PREAMBLE    A    contention lost (identity mismatch) -> back off, new preamble
+   5     1.0     70  RACH_PREAMBLE   -> RACH_RAR         A    preamble detected -> Random Access Response (Msg2)
+   6     1.2     74  RACH_RAR        -> RACH_CONNREQ     A    RAR received, timing advance = 1 steps -> RRC connection request (Msg3)
+   7     1.4     78  RACH_CONNREQ    -> RACH_CONTENTION  A    Msg3 sent -> awaiting contention resolution (Msg4)
+   8     1.6     82  RACH_CONTENTION -> CONNECTED        A    contention resolved (Msg4) -> RRC connected
+  99    19.8    446  CONNECTED       -> HANDOVER         A    policy fired: B -96.7 vs A -98.7 dBm -> handover command to B
+ 102    20.4    458  HANDOVER        -> CONNECTED        B    handover complete: A -> B (target RACH ok)
+ 104    20.8    466  CONNECTED       -> HANDOVER         B    policy fired: A -98.4 vs B -99.7 dBm -> handover command to A
+ 107    21.4    478  HANDOVER        -> CONNECTED        A    handover complete: B -> A (target RACH ok)
+ 109    21.8    486  CONNECTED       -> HANDOVER         A    policy fired: B -98.8 vs A -101.8 dBm -> handover command to B
+ 112    22.4    498  HANDOVER        -> CONNECTED        B    handover complete: A -> B (target RACH ok)
+ 114    22.8    506  CONNECTED       -> HANDOVER         B    policy fired: A -95.7 vs B -97.2 dBm -> handover command to A
+ 117    23.4    518  HANDOVER        -> CONNECTED        A    handover complete: B -> A (target RACH ok)
+ 121    24.2    534  CONNECTED       -> HANDOVER         A    policy fired: B -97.2 vs A -100.7 dBm -> handover command to B
+ 124    24.8    546  HANDOVER        -> CONNECTED        B    handover complete: A -> B (target RACH ok)
+ 126    25.2    554  CONNECTED       -> HANDOVER         B    policy fired: A -100.3 vs B -100.6 dBm -> handover command to A
+ 129    25.8    566  HANDOVER        -> CONNECTED        A    handover complete: B -> A (target RACH ok)
+ 130    26.0    570  CONNECTED       -> HANDOVER         A    policy fired: B -96.5 vs A -99.4 dBm -> handover command to B
+ 133    26.6    582  HANDOVER        -> CONNECTED        B    handover complete: A -> B (target RACH ok)
+ 139    27.8    606  CONNECTED       -> HANDOVER         B    policy fired: A -97.8 vs B -99.8 dBm -> handover command to A
+ 142    28.4    618  HANDOVER        -> CONNECTED        A    handover complete: B -> A (target RACH ok)
+ 143    28.6    622  CONNECTED       -> HANDOVER         A    policy fired: B -99.1 vs A -102.4 dBm -> handover command to B
+ 146    29.2    634  HANDOVER        -> CONNECTED        B    handover complete: A -> B (target RACH ok)
+ 322    64.4   1338  CONNECTED       -> HANDOVER         B    policy fired: C -96.8 vs B -98.3 dBm -> handover command to C
+ 325    65.0   1350  HANDOVER        -> CONNECTED        C    handover complete: B -> C (target RACH ok)
+ 326    65.2   1354  CONNECTED       -> HANDOVER         C    policy fired: B -96.4 vs C -98.8 dBm -> handover command to B
+ 329    65.8   1366  HANDOVER        -> CONNECTED        B    handover complete: C -> B (target RACH ok)
+ 332    66.4   1378  CONNECTED       -> HANDOVER         B    policy fired: C -95.7 vs B -103.3 dBm -> handover command to C
+ 335    67.0   1390  HANDOVER        -> CONNECTED        C    handover complete: B -> C (target RACH ok)
+ 337    67.4   1398  CONNECTED       -> HANDOVER         C    policy fired: B -98.9 vs C -101.8 dBm -> handover command to B
+ 340    68.0   1410  HANDOVER        -> CONNECTED        B    handover complete: C -> B (target RACH ok)
+ 352    70.4   1458  CONNECTED       -> HANDOVER         B    policy fired: C -103.3 vs B -106.1 dBm -> handover command to C
+ 355    71.0   1470  HANDOVER        -> CONNECTED        C    handover complete: B -> C (target RACH ok)
+ 407    81.4   1678  CONNECTED       -> HANDOVER         C    policy fired: B -98.9 vs C -99.5 dBm -> handover command to B
+ 410    82.0   1690  HANDOVER        -> CONNECTED        B    handover complete: C -> B (target RACH ok)
+ 411    82.2   1694  CONNECTED       -> HANDOVER         B    policy fired: C -92.1 vs B -100.8 dBm -> handover command to C
+ 414    82.8   1706  HANDOVER        -> CONNECTED        C    handover complete: B -> C (target RACH ok)
+
+Handovers completed: 16   RLF: 0   Ping-pongs: 13
+Ping-pong handovers (t, from, to): (107, 'B', 'A'), (112, 'A', 'B'), (117, 'B', 'A'), (124, 'A', 'B'), (129, 'B', 'A'), (133, 'A', 'B'), (142, 'B', 'A'), (146, 'A', 'B'), (329, 'C', 'B'), (335, 'B', 'C'), (340, 'C', 'B'), (355, 'B', 'C'), (414, 'B', 'C')
